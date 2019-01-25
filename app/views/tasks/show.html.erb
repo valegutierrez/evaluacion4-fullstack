@@ -1,19 +1,35 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-5">
+    <img src="<%= @task.photo %>" class="img-fluid" alt="Foto">
+  </div>
+  <div class="col-md-5">
+    <p>
+      <strong>Title:</strong>
+      <%= @task.title %>
+    </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= @task.photo %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @task.content %>
-</p>
-
+    <p>
+      <strong>Content:</strong>
+      <%= @task.content %>
+    </p>
+    <table class="table">
+    <thead>
+    <th scope="col">Ranking</th>
+    <th scope="col">Nombre</th>
+    </thead>
+    <tbody>
+    <% @task.todos.each do |i| %>
+      <% @user = User.find(i.user_id) %>
+      <tr>
+        <th scope="row">#</th>
+        <td><%= @user.photo %></td>
+        <td><%= @user.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+    </table>
+  </div>
+</div>
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

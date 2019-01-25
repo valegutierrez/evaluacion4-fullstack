@@ -1,10 +1,22 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :finish]
+  before_action :authenticate_user!
 
   # GET /tasks
   # GET /tasks.json
   def index
     @tasks = Task.all
+  end
+
+  def finish
+    @user = User.find(current_user.id)
+    @todo = Todo.create(done: true, user_id: @user.id, task_id: @task.id, finished_at: DateTime.now)
+    @user.todos << @todo
+    redirect_to tasks_path
+  end
+
+  def done
+    @todos = Todo.all
   end
 
   # GET /tasks/1
