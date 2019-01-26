@@ -13,7 +13,13 @@
           <%= link_to 'Show', task, class: 'btn btn-secondary'%>
           <%= link_to 'Edit', edit_task_path(task), class: 'btn btn-info' %>
           <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning' %>
-          <%= link_to 'Finish', finish_task_path(task), class: 'btn btn-success'%>
+          <% task.todos.each do |t| %>
+            <% if (t.user_id == current_user.id) && (t.done == true) %>
+              <%= link_to 'Finished', finish_task_path(task),class: 'btn btn-success disabled', disabled: true %>
+            <% else %>
+              <%= link_to 'Finish', finish_task_path(task), class: 'btn btn-success'%>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

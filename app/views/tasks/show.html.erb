@@ -17,14 +17,15 @@
     <thead>
     <th scope="col">Ranking</th>
     <th scope="col">Nombre</th>
+    <th scope="col">Fecha término</th>
     </thead>
     <tbody>
-    <% @task.todos.each do |i| %>
+    <% @task.todos.take(5).each do |i| %>
       <% @user = User.find(i.user_id) %>
       <tr>
-        <th scope="row">#</th>
-        <td><%= @user.photo %></td>
+        <td><img src="<%= @user.photo %>" class="rounded-circle img-icon"></td>
         <td><%= @user.name %></td>
+        <td><%= i.finished_at  %></td>
       </tr>
     <% end %>
     </tbody>

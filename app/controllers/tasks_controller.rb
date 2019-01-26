@@ -10,9 +10,13 @@ class TasksController < ApplicationController
 
   def finish
     @user = User.find(current_user.id)
-    @todo = Todo.create(done: true, user_id: @user.id, task_id: @task.id, finished_at: DateTime.now)
-    @user.todos << @todo
-    redirect_to tasks_path
+    @todo = Todo.where(user_id: @user.id, task_id: @task.id)
+    if @todo.one?
+      @todo[0].done = true
+      @todo[0].finished_at = DateTime.now
+      @todo[0].save
+      redirect_to tasks_path
+    end
   end
 
   def done
@@ -37,9 +41,12 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-
     respond_to do |format|
       if @task.save
+        @users = User.all
+        @users.each do |user|
+          user.tasks << @task
+        end
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
