@@ -6,7 +6,7 @@ El objetivo de este desafío era crear una app con Rails que tuviese relaciones 
 
 ## Acceso a página
 
-Para acceder a esta página, haz click [aquí]()
+Para acceder a esta página, haz click [aquí.](https://floating-island-66860.herokuapp.com)
 
 ## Trello
 
