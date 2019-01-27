@@ -12,9 +12,7 @@ class TasksController < ApplicationController
     @user = User.find(current_user.id)
     @todo = Todo.where(user_id: @user.id, task_id: @task.id)
     if @todo.one?
-      @todo[0].done = true
-      @todo[0].finished_at = DateTime.now
-      @todo[0].save
+      @todo[0].update(done: true, finished_at: DateTime.now)
       redirect_to tasks_path
     end
   end
@@ -23,9 +21,24 @@ class TasksController < ApplicationController
     @todos = Todo.all
   end
 
+  def not_done
+    @todos = Todo.all
+  end
+
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @users = User.all
+    find_ranking(@task)
+  end
+
+  def find_ranking(list)
+    @all = []
+    list.todos.each do |t|
+      if t.done == true
+        @all << t
+      end
+    end
   end
 
   # GET /tasks/new

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     end
     collection do
       get 'done'
+      get 'not_done'
     end
   end
   resources :todos, only: [:show, :edit, :update, :destroy]

@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Todo.destroy_all
-Task.destroy_all
+Todo.delete_all
+Task.delete_all
 9.times do |i|
   @task = Task.new(
     title: "Cocinar #{Faker::Food.dish}",

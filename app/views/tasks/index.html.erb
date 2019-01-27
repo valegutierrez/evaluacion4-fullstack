@@ -14,9 +14,9 @@
           <%= link_to 'Edit', edit_task_path(task), class: 'btn btn-info' %>
           <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning' %>
           <% task.todos.each do |t| %>
-            <% if (t.user_id == current_user.id) && (t.done == true) %>
+            <% if t.user_id == current_user.id and t.done == true %>
               <%= link_to 'Finished', finish_task_path(task),class: 'btn btn-success disabled', disabled: true %>
-            <% else %>
+            <% elsif t.user_id == current_user.id %>
               <%= link_to 'Finish', finish_task_path(task), class: 'btn btn-success'%>
             <% end %>
           <% end %>

@@ -4,7 +4,7 @@
 <h1>Tasks Done</h1>
 <div class="row">
   <% @todos.each do |todo| %>
-    <% if todo.done == true and todo.user_id == current_user.id %>
+    <% if todo.done == false and todo.user_id == current_user.id %>
       <% @task = Task.find(todo.task_id) %>
       <div class="col-4 mt-2">
         <div class="card">
@@ -14,6 +14,7 @@
             <p class="card-text"><%= @task.content %></p>
             <%= link_to 'Show', task_path(@task), class: 'btn btn-secondary'%>
             <%= link_to 'Edit', edit_todo_path(todo), class: 'btn btn-info' %>
+            <%= link_to 'Finish', finish_task_path(@task), class: 'btn btn-success'%>
           </div>
         </div>
       </div>
