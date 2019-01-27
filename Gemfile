@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'bundler', '2.0.1'
+gem 'bundler', '1.17.3'
 # Use Devise for authentication
 gem 'devise'
 # Use Faker to create false content
