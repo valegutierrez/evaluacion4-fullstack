@@ -3,7 +3,7 @@
 one:
   user: one
   task: one
-  done: false
+  done: true
   finished_at: 2019-01-25 17:53:27
 
 two:

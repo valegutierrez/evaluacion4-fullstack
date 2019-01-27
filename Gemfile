@@ -3,18 +3,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-# Use Puma as the app server
-gem 'puma', '~> 3.11'
 # Use Devise for authentication
 gem 'devise'
-# Use Jquery-turbolinks to make dropdown load better
-gem 'jquery-turbolinks'
 # Use Faker to create false content
 gem 'faker'
+# Use jquery-rails to make dropdown load better
+gem 'jquery-rails'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 5.2.2'
+# Use pg as the database for Active Record
+gem 'pg'
+# Use Puma as the app server
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

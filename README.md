@@ -4,6 +4,10 @@
 
 El objetivo de este desafío era crear una app con Rails que tuviese relaciones N a N entre sus modelos. Esta aplicación debía crear una lista de tareas por hacer para el usuario y que mostrase quiénes la habían completado.
 
+## Acceso a página
+
+Para acceder a esta página, haz click [aquí]()
+
 ## Trello
 
 Para acceder a la página del tablero de Trello, haz click [aquí.](https://trello.com/b/jCUaOIxE/evaluaci%C3%B3n-3-relaciones-n-a-n)
