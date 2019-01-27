@@ -21,7 +21,7 @@
     <th scope="col">Fecha término</th>
     </thead>
     <tbody>
-    <% @all.reverse.first(5).each do |t| %>
+    <% @all.sort_by{ |i| i.finished_at }.first(5).each do |t| %>
       <% @users.each do |u| %>
         <% if t.user_id == u.id%>
           <tr>
@@ -32,7 +32,7 @@
         <% end %>
       <% end %>
     <% end %>
-    <% @all.drop(5).reverse.each do |t| %>
+    <% @all.sort_by{ |i| i.finished_at }.drop(5).each do |t| %>
       <% @users.each do |u| %>
         <% if t.user_id == u.id%>
           <tr>

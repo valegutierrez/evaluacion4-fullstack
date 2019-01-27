@@ -11,6 +11,8 @@ gem 'sqlite3'
 gem 'puma', '~> 3.11'
 # Use Devise for authentication
 gem 'devise'
+# Use Jquery-turbolinks to make dropdown load better
+gem 'jquery-turbolinks'
 # Use Faker to create false content
 gem 'faker'
 # Use SCSS for stylesheets

@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :finish]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :finish, :unfinish]
+  before_action :count_todos, only: [:index, :done, :not_done, :new, :show, :edit, :update, :destroy, :finish, :unfinish]
   before_action :authenticate_user!
 
   # GET /tasks
@@ -8,11 +9,32 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def count_todos
+    @todos = Todo.all
+    @count = []
+    @todos.each do |todo|
+      if signed_in?
+        if todo.user_id == current_user.id and todo.done == true
+          @count << todo
+        end
+      end
+    end
+  end
+
   def finish
     @user = User.find(current_user.id)
     @todo = Todo.where(user_id: @user.id, task_id: @task.id)
     if @todo.one?
       @todo[0].update(done: true, finished_at: DateTime.now)
+      redirect_to tasks_path
+    end
+  end
+
+  def unfinish
+    @user = User.find(current_user.id)
+    @todo = Todo.where(user_id: @user.id, task_id: @task.id)
+    if @todo.one?
+      @todo[0].update(done: false, finished_at: nil)
       redirect_to tasks_path
     end
   end

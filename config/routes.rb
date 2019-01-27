@@ -2,13 +2,16 @@ Rails.application.routes.draw do
   resources :tasks do
     member do
       get 'finish'
+      get 'unfinish'
     end
     collection do
       get 'done'
       get 'not_done'
     end
   end
-  resources :todos, only: [:show, :edit, :update, :destroy]
+
+  resources :todos, only: [:show, :edit, :update, :destroy] do
+  end
 
   devise_for :users
   root to: 'tasks#index'
