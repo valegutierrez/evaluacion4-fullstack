@@ -113,6 +113,12 @@ class TasksController < ApplicationController
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
+    destroy_todos
+  end
+
+  def destroy_todos
+    @todos = Todo.where(task_id: nil)
+    @todos.delete_all
   end
 
   private
