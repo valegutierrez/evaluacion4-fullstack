@@ -10,8 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :todos, only: [:show, :edit, :update, :destroy] do
-  end
+  resources :todos, only: [:show, :edit, :update, :destroy]
 
   devise_for :users
   root to: 'tasks#index'

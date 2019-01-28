@@ -1,24 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :finish, :unfinish]
-  before_action :count_todos, only: [:index, :done, :not_done, :new, :show, :edit, :update, :destroy, :finish, :unfinish]
   before_action :authenticate_user!
 
   # GET /tasks
   # GET /tasks.json
   def index
     @tasks = Task.all
-  end
-
-  def count_todos
-    @todos = Todo.all
-    @count = []
-    @todos.each do |todo|
-      if signed_in?
-        if todo.user_id == current_user.id and todo.done == true
-          @count << todo
-        end
-      end
-    end
   end
 
   def finish
