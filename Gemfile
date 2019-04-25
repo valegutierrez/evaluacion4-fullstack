@@ -5,7 +5,7 @@ ruby '2.5.1'
 
 gem 'bundler', '1.17.3'
 # Use Devise for authentication
-gem 'devise'
+gem 'devise', '>= 4.6.0'
 # Use Faker to create false content
 gem 'faker'
 # Use jquery-rails to make dropdown load better
